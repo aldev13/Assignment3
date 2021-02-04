@@ -15,7 +15,7 @@
 
     <form asp-action="MovieInput" method="post" class="form-style">
         <label asp-for="Category">Category:</label>
-        <select asp-for="Category" class="select-field" >
+        <select asp-for="Category" class="select-field" required>
             <option>Select One:</option>
             <option>Action/Adventure</option>
             <option>Comedy</option>
@@ -28,16 +28,16 @@
         </select>
         <br />
         <label asp-for="Title">Title:</label>
-        <input asp-for="Title" class="input-field"/>
+        <input asp-for="Title" class="input-field" required/>
         <br />
         <label asp-for="Year">Year:</label>
-        <input asp-for="Year" class="input-field"/>
+        <input asp-for="Year" class="input-field" required/>
         <br />
         <label asp-for="Director">Director:</label>
-        <input asp-for="Director" class="input-field"/>
+        <input asp-for="Director" class="input-field" required/>
         <br />
         <label asp-for="Rating">Rating:</label>
-        <select asp-for="Rating" class="select-field">
+        <select asp-for="Rating" class="select-field" required>
             <option>Select One:</option>
             <option>G</option>
             <option>PG</option>
