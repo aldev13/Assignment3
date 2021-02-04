@@ -1,0 +1,50 @@
+﻿@*
+    This page displays each Movie entry that has been made since the program was opened.
+    You may also navigate back to add another movie.
+*@
+
+@{
+    ViewBag.Title = "Movies List";
+}
+
+@model IEnumerable<Assignment3.Models.MovieModel>
+
+<div class="text-center">
+    <h1>@ViewBag.Title</h1>
+
+    <h3>Here is a List of all movies you have entered:</h3>
+
+    <br />
+    <br />
+
+</div>
+
+    <table style="border:solid; width:100%">
+        <thead style="border:solid">
+            <tr><th>Category  </th><th>Title  </th><th>Year</th><th>Director  </th><th>Rating  </th><th>Edited  </th><th>Lent To  </th><th>Notes  </th></tr>
+        </thead>
+        <tbody style="border:solid">
+
+            @*Function builds each row from TempStorage Model*@
+            @foreach (Assignment3.Models.MovieModel x in Model)
+            {
+                <tr>
+                    <td>@x.Category</td>
+                    <td>@x.Title</td>
+                    <td>@x.Year</td>
+                    <td>@x.Director</td>
+                    <td>@x.Rating</td>
+                    <td>@x.Edited</td>
+                    <td>@x.LentTo</td>
+                    <td>@x.Notes</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+<br />
+<br />
+
+<div class="text-center">
+    <a asp-controller="Home" asp-action="MovieInput">Add Another Movie</a>
+</div>
