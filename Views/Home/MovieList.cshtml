@@ -7,7 +7,7 @@
     ViewBag.Title = "Movies List";
 }
 
-@model IEnumerable<Assignment3.Models.MovieModel>
+@model IEnumerable<MovieModel>
 
 <div class="text-center">
     <h1>@ViewBag.Title</h1>
@@ -19,14 +19,16 @@
 
 </div>
 
-    <table style="border:solid; width:100%">
-        <thead style="border:solid">
+<div class="text-center">
+
+    <table class="table table-bordered table-hover table-secondary">
+        <thead >
             <tr><th>Category  </th><th>Title  </th><th>Year</th><th>Director  </th><th>Rating  </th><th>Edited  </th><th>Lent To  </th><th>Notes  </th></tr>
         </thead>
-        <tbody style="border:solid">
+        <tbody >
 
-            @*Function builds each row from TempStorage Model*@
-            @foreach (Assignment3.Models.MovieModel x in Model)
+
+            @foreach (var x in Model)
             {
                 <tr>
                     <td>@x.Category</td>
@@ -37,11 +39,27 @@
                     <td>@x.Edited</td>
                     <td>@x.LentTo</td>
                     <td>@x.Notes</td>
+                    <td>
+                        <form asp-action="MovieList" method="post">
+                            <input type="hidden" name="Id" value="@x.Id" />
+                            <button type="submit" class="btn btn-sm btn-danger">
+                                Remove Movie
+                            </button>
+                        </form>
+                    </td>
+                    <td>
+                        <form asp-action="EditMovie" method="get">
+                            <input type="hidden" name="Id" value="@x.Id" />
+                            <button type="submit" class="btn btn-sm btn-primary">
+                                Edit Movie
+                            </button>
+                        </form>
+                    </td>
                 </tr>
             }
         </tbody>
     </table>
-
+</div>
 <br />
 <br />
 

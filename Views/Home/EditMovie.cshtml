@@ -1,8 +1,8 @@
 ﻿@*
-    Page for the Form to enter and store each movie entry
+    Form to Edit movie entries
 *@
 @{
-    ViewBag.Title = "Enter Movie Below";
+    ViewBag.Title = "Edit Entry";
 }
 
 @model Assignment3.Models.MovieModel
@@ -13,10 +13,11 @@
     <br />
     <br />
 
-    <form asp-action="MovieInput" method="post" class="form-style-2">
+    <form asp-action="EditMovie" method="post" class="form-style-2">
         <label asp-for="Category">Category:</label>
-        <select asp-for="Category" class="select-field" required>
-            <option>Select One:</option>
+        <select asp-for="Category">
+            class="select-field" required>
+            <option value="@Model.Category">Select One:</option>
             <option>Action/Adventure</option>
             <option>Comedy</option>
             <option>Drama</option>
@@ -29,20 +30,20 @@
         <br />
         <br />
         <label asp-for="Title">Title:</label>
-        <input asp-for="Title" class="input-field" required />
+        <input asp-for="Title" class="input-field" value="@Model.Title" required />
         <br />
         <br />
         <label asp-for="Year">Year:</label>
-        <input asp-for="Year" class="input-field" required />
+        <input asp-for="Year" class="input-field" value="@Model.Year" required />
         <br />
         <br />
         <label asp-for="Director">Director:</label>
-        <input asp-for="Director" class="input-field" required />
+        <input asp-for="Director" class="input-field" value="@Model.Director" required />
         <br />
         <br />
         <label asp-for="Rating">Rating:</label>
         <select asp-for="Rating" class="select-field" required>
-            <option>Select One:</option>
+            <option value="@Model.Rating">Select One:</option>
             <option>G</option>
             <option>PG</option>
             <option>PG-13</option>
@@ -56,22 +57,23 @@
         <br />
         <label asp-for="Edited">Edited:</label>
         <select asp-for="Edited" class="select-field">
-            <option>Select One:</option>
+            <option value="@Model.Edited">Select One:</option>
             <option value="true">Yes</option>
             <option value="false">No</option>
         </select>
         <br />
         <br />
         <label asp-for="LentTo">Lent To:</label>
-        <input asp-for="LentTo" class="input-field" />
+        <input asp-for="LentTo" value="@Model.LentTo" class="input-field" />
         <br />
         <br />
         <label asp-for="Notes">Notes:</label>
-        <input asp-for="Notes" maxlength="25" class="input-field" />
+        <input asp-for="Notes" maxlength="25" class="input-field" value="@Model.Notes" />
         <br />
         <br />
         <input type="submit" value="Submit Movie" id="submitButton" style="height:100px; width:150px" />
-
+        <input type="hidden" name="Id" value="@Model.Id" />
         <div asp-validation-summary="All"></div>
     </form>
+
 </div>
